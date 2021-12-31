@@ -1,3 +1,25 @@
+# Differences On This Fork
+
+- Added "python.djangoTestRunner.prefixWithProjectName" setting to optionally disable prefixing method/class/file/app name with the project name
+  - e.g. If this test runner runs the command "python ./manage.py **MyProject**.MyApp.ThisFile.ThisClass.ThisMethod" by default, it will run "python ./manage.py MyApp.ThisFile.ThisClass.ThisMethod" if the prefixWithProjectName command is false
+
+## How To Use This Extension
+
+- clone this repo using your preferred git workflow
+- `cd {the-newly-cloned-repo}`
+- `pnpm install` or `npm install` to install the necessary packages
+- `npx vsce package` to build the .vsix file
+- Uninstall Django Test Runner extension
+- Install this extension [from the vsix file](https://community.particle.io/t/how-to-install-a-vscode-extension-from-a-vsix-file/51014)
+  - tl;dr extensions sidebar -> 3 dot menu in the top right -> Install from VSIX... -> select the .vsix file that was just built (likely {the-newly-cloned-repo}/django-test-runner-3.0.3.vsix)
+
+## To Make Changes
+
+- Make changes to the code
+- Run `npx vsce package` to rebuild
+- Uninstall Django Test Runner extension
+- Reinstall from .vsix
+
 # [django-test-runner](https://marketplace.visualstudio.com/items?itemName=Pachwenko.django-test-runner)
 
 Adds support for running Django tests in [Visual Studio Code](https://github.com/microsoft/vscode). Provides shortcuts to run closest method, class, file, app and previous tests. Provides support for Django-Nose in settings.
@@ -53,6 +75,8 @@ This extension contributes the following settings:
 - `python.djangoTestRunner.djangoNose`: if checked will use django-nose syntax for running class/method tests inside a file, defaults to non-nose testing syntax
 - `python.djangoTestRunner.flags`: any flags you wish to run such as --nocapture, also useful for specifying different settings if you use a modified manage&#46;py
 - `python.djangoTestRunner.prefixCommand`: any command(s) to be directly before the main test command e.g. "cd ~/Projects/hello-world/src &&" to cd into the directory containing your manage&#46;py
+- `python.djangoTestRunner.prefixWithProjectName`: optionally disable prefixing method/class/file/app name with the project name
+  - e.g. If this test runner runs the command "python ./manage.py **MyProject**.MyApp.ThisFile.ThisClass.ThisMethod" by default, it will run "python ./manage.py MyApp.ThisFile.ThisClass.ThisMethod" if the prefixWithProjectName command is false
 
 ## Known Issues
 
