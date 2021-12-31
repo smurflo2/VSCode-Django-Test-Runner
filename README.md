@@ -9,7 +9,7 @@
 - `cd {the-newly-cloned-repo}`
 - `pnpm install` or `npm install` to install the necessary packages
 - `npx vsce package` to build the .vsix file
-- Uninstall Django Test Runner extension
+- Uninstall Django Test Runner extension (if you have it installed already)
 - Install this extension [from the vsix file](https://community.particle.io/t/how-to-install-a-vscode-extension-from-a-vsix-file/51014)
   - tl;dr extensions sidebar -> 3 dot menu in the top right -> Install from VSIX... -> select the .vsix file that was just built (likely {the-newly-cloned-repo}/django-test-runner-3.0.3.vsix)
 
