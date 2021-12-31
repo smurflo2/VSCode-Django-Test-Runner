@@ -3,7 +3,6 @@ import * as vscode from "vscode";
 const METHOD_REGEX = /(\s*)def\s+(test_\w+)\s?\(/i;
 const CLASS_REGEX = /(\s*)class\s+(\w+)/i;
 
-
 let terminal: vscode.Terminal;
 
 class TestRunner {
@@ -12,8 +11,7 @@ class TestRunner {
   filePath: string = "";
   lastRanTestPath: string = "";
 
-  constructor() {
-  }
+  constructor() {}
 
   toString(): string {
     if (this.isDjangoNose()) {
@@ -114,7 +112,9 @@ class TestRunner {
 
   isDjangoNose(): boolean {
     const editor = vscode.window.activeTextEditor;
-    if (!editor) { return false; }
+    if (!editor) {
+      return false;
+    }
     const config = vscode.workspace.getConfiguration("", editor.document.uri);
     return config.get("python.djangoTestRunner.djangoNose") === true;
   }
@@ -137,7 +137,7 @@ class TestRunner {
         "./manage.py",
         "test",
         configuration.get("python.djangoTestRunner.flags"),
-        testPath
+        testPath,
       ];
       terminal.sendText(cmds.join(" "));
     }
@@ -200,10 +200,13 @@ export function activate(context: vscode.ExtensionContext) {
         tester.runFileTests();
       }
     ),
-    vscode.commands.registerCommand("python.djangoTestRunner.runAppTests", () => {
-      tester.runAppTests();
-    })
+    vscode.commands.registerCommand(
+      "python.djangoTestRunner.runAppTests",
+      () => {
+        tester.runAppTests();
+      }
+    )
   );
 }
 
-export function deactivate() { }
+export function deactivate() {}
