@@ -1,128 +1,139 @@
 {
-    "name": "django-test-runner",
-    "displayName": "Django Test Runner",
-    "description": "Run Django and Django-nose tests in VSCode",
-    "version": "3.0.2",
-    "publisher": "Pachwenko",
-    "repository": "https://github.com/Pachwenko/VSCode-Django-Test-Runner",
-    "engines": {
-        "vscode": "^1.36.0"
-    },
-    "categories": [
-        "Other"
+  "name": "django-test-runner",
+  "displayName": "Django Test Runner",
+  "description": "Run Django and Django-nose tests in VSCode",
+  "version": "3.0.3",
+  "publisher": "Pachwenko-Smurflo fork",
+  "repository": "https://github.com/smurflo2/VSCode-Django-Test-Runner",
+  "engines": {
+    "vscode": "^1.36.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "python",
+    "python tests",
+    "django",
+    "django tests",
+    "tests"
+  ],
+  "activationEvents": [
+    "onCommand:python.djangoTestRunner.runMethodTests",
+    "onCommand:python.djangoTestRunner.runClassTests",
+    "onCommand:python.djangoTestRunner.runFileTests",
+    "onCommand:python.djangoTestRunner.runAppTests",
+    "onCommand:python.djangoTestRunner.runPreviousTests"
+  ],
+  "main": "./out/extension",
+  "contributes": {
+    "configuration": [
+      {
+        "title": "Test prefix",
+        "properties": {
+          "python.djangoTestRunner.prefixCommand": {
+            "type": "string",
+            "default": "",
+            "description": "Prefix command to be executed before all others. You can set the manage.py directory here with `cd /directory/ &&`",
+            "scope": "resource"
+          }
+        }
+      },
+      {
+        "title": "Test Flags",
+        "properties": {
+          "python.djangoTestRunner.flags": {
+            "type": "string",
+            "default": "",
+            "description": "Extra flags to add, also useful for running modified manage.py files",
+            "scope": "resource"
+          }
+        }
+      },
+      {
+        "title": "Test with Django-Nose",
+        "properties": {
+          "python.djangoTestRunner.djangoNose": {
+            "type": "boolean",
+            "default": "",
+            "description": "Whether or not to use a colon to denote class/method inside a file. Required for testing with Django-Nose",
+            "scope": "resource"
+          }
+        }
+      },
+      {
+        "title": "Prefix with project name",
+        "properties": {
+          "python.djangoTestRunner.prefixWithProjectName": {
+            "type": "boolean",
+            "default": "true",
+            "description": "Whether to prefix the app/file/class etc. with the Project name. True for \"...test MyProject.MyApp...\", false for \"...test MyApp...\"",
+            "scope": "resource"
+          }
+        }
+      }
     ],
-    "keywords": [
-        "python",
-        "python tests",
-        "django",
-        "django tests",
-        "tests"
+    "commands": [
+      {
+        "command": "python.djangoTestRunner.runPreviousTests",
+        "title": "python.djangoTestRunner: Run Previous Tests"
+      },
+      {
+        "command": "python.djangoTestRunner.runMethodTests",
+        "title": "python.djangoTestRunner: Run Closest Method Test"
+      },
+      {
+        "command": "python.djangoTestRunner.runClassTests",
+        "title": "python.djangoTestRunner: Run Closest Class Tests"
+      },
+      {
+        "command": "python.djangoTestRunner.runFileTests",
+        "title": "python.djangoTestRunner: Run Current File tests"
+      },
+      {
+        "command": "python.djangoTestRunner.runAppTests",
+        "title": "python.djangoTestRunner: Run Current App Tests"
+      }
     ],
-    "activationEvents": [
-        "onCommand:python.djangoTestRunner.runMethodTests",
-        "onCommand:python.djangoTestRunner.runClassTests",
-        "onCommand:python.djangoTestRunner.runFileTests",
-        "onCommand:python.djangoTestRunner.runAppTests",
-        "onCommand:python.djangoTestRunner.runPreviousTests"
-    ],
-    "main": "./out/extension",
-    "contributes": {
-        "configuration": [
-            {
-                "title": "Test prefix",
-                "properties": {
-                    "python.djangoTestRunner.prefixCommand": {
-                        "type": "string",
-                        "default": "",
-                        "description": "Prefix command to be executed before all others. You can set the manage.py directory here with `cd /directory/ &&`",
-                        "scope": "resource"
-                    }
-                }
-            },
-            {
-                "title": "Test Flags",
-                "properties": {
-                    "python.djangoTestRunner.flags": {
-                        "type": "string",
-                        "default": "",
-                        "description": "Extra flags to add, also useful for running modified manage.py files",
-                        "scope": "resource"
-                    }
-                }
-            },
-            {
-                "title": "Test with Django-Nose",
-                "properties": {
-                    "python.djangoTestRunner.djangoNose": {
-                        "type": "boolean",
-                        "default": "",
-                        "description": "Whether or not to use a colon to denote class/method inside a file. Required for testing with Django-Nose",
-                        "scope": "resource"
-                    }
-                }
-            }
-        ],
-        "commands": [
-            {
-                "command": "python.djangoTestRunner.runPreviousTests",
-                "title": "python.djangoTestRunner: Run Previous Tests"
-            },
-            {
-                "command": "python.djangoTestRunner.runMethodTests",
-                "title": "python.djangoTestRunner: Run Closest Method Test"
-            },
-            {
-                "command": "python.djangoTestRunner.runClassTests",
-                "title": "python.djangoTestRunner: Run Closest Class Tests"
-            },
-            {
-                "command": "python.djangoTestRunner.runFileTests",
-                "title": "python.djangoTestRunner: Run Current File tests"
-            },
-            {
-                "command": "python.djangoTestRunner.runAppTests",
-                "title": "python.djangoTestRunner: Run Current App Tests"
-            }
-        ],
-        "keybindings": [
-            {
-                "command": "python.djangoTestRunner.runMethodTests",
-                "key": "cmd+d cmd+m"
-            },
-            {
-                "command": "python.djangoTestRunner.runClassTests",
-                "key": "cmd+d cmd+c"
-            },
-            {
-                "command": "python.djangoTestRunner.runFileTests",
-                "key": "cmd+d cmd+f"
-            },
-            {
-                "command": "python.djangoTestRunner.runAppTests",
-                "key": "cmd+d cmd+a"
-            },
-            {
-                "command": "python.djangoTestRunner.runPreviousTests",
-                "key": "cmd+d cmd+p"
-            }
-        ]
-    },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "pretest": "npm run compile",
-        "test": "node ./out/test/runTest.js"
-    },
-    "devDependencies": {
-        "@types/glob": "^7.1.1",
-        "@types/mocha": "^5.2.6",
-        "@types/node": "^10.12.21",
-        "@types/vscode": "^1.36.0",
-        "glob": "^7.1.4",
-        "mocha": "^6.1.4",
-        "typescript": "^3.3.1",
-        "tslint": "^5.12.1",
-        "vscode-test": "^1.0.0-next.0"
-    }
+    "keybindings": [
+      {
+        "command": "python.djangoTestRunner.runMethodTests",
+        "key": "cmd+d cmd+m"
+      },
+      {
+        "command": "python.djangoTestRunner.runClassTests",
+        "key": "cmd+d cmd+c"
+      },
+      {
+        "command": "python.djangoTestRunner.runFileTests",
+        "key": "cmd+d cmd+f"
+      },
+      {
+        "command": "python.djangoTestRunner.runAppTests",
+        "key": "cmd+d cmd+a"
+      },
+      {
+        "command": "python.djangoTestRunner.runPreviousTests",
+        "key": "cmd+d cmd+p"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^10.12.21",
+    "@types/vscode": "^1.36.0",
+    "glob": "^7.1.4",
+    "mocha": "^6.1.4",
+    "typescript": "^3.3.1",
+    "tslint": "^5.12.1",
+    "vscode-test": "^1.0.0-next.0"
+  }
 }
