@@ -58,6 +58,9 @@ class TestRunner {
       .replace(/\\/g, ".")
       .replace(/\\\\/g, ".")
       .substring(1);
+    if (!this.prefixWithProjectName()) {
+      this.filePath = this.filePath.slice(this.filePath.indexOf(".") + 1);
+    }
   }
 
   updateClassAndMethodPath(): void {
@@ -117,6 +120,15 @@ class TestRunner {
     }
     const config = vscode.workspace.getConfiguration("", editor.document.uri);
     return config.get("python.djangoTestRunner.djangoNose") === true;
+  }
+
+  prefixWithProjectName(): boolean {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) {
+      return false;
+    }
+    const config = vscode.workspace.getConfiguration("", editor.document.uri);
+    return config.get("python.djangoTestRunner.prefixWithProjectName") === true;
   }
 
   runTests(testPath: string): void {

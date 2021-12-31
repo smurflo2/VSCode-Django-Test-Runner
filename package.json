@@ -66,7 +66,7 @@
         "properties": {
           "python.djangoTestRunner.prefixWithProjectName": {
             "type": "boolean",
-            "default": "true",
+            "default": true,
             "description": "Whether to prefix the app/file/class etc. with the Project name. True for \"...test MyProject.MyApp...\", false for \"...test MyApp...\"",
             "scope": "resource"
           }
