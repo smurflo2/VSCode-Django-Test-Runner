@@ -3,3 +3,4 @@ out/
 .vscode/
 tsconfig.json
 tslintjson
+.vscode-test/

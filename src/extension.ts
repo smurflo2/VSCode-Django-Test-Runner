@@ -131,6 +131,15 @@ class TestRunner {
     return config.get("python.djangoTestRunner.prefixWithProjectName") === true;
   }
 
+  usePython3Command(): boolean {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) {
+      return false;
+    }
+    const config = vscode.workspace.getConfiguration("", editor.document.uri);
+    return config.get("python.djangoTestRunner.usePython3") === true;
+  }
+
   runTests(testPath: string): void {
     this.lastRanTestPath = testPath;
     const editor = vscode.window.activeTextEditor;
@@ -145,7 +154,9 @@ class TestRunner {
       terminal.show();
       const cmds = [
         configuration.get("python.djangoTestRunner.prefixCommand"),
-        configuration.get("python.pythonPath"),
+        this.usePython3Command()
+          ? "python3"
+          : configuration.get("python.pythonPath"),
         "./manage.py",
         "test",
         configuration.get("python.djangoTestRunner.flags"),

@@ -2,7 +2,7 @@
   "name": "django-test-runner",
   "displayName": "Django Test Runner",
   "description": "Run Django and Django-nose tests in VSCode",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "publisher": "Pachwenko-Smurflo fork",
   "repository": "https://github.com/smurflo2/VSCode-Django-Test-Runner",
   "engines": {
@@ -68,6 +68,17 @@
             "type": "boolean",
             "default": true,
             "description": "Whether to prefix the app/file/class etc. with the Project name. True for \"...test MyProject.MyApp...\", false for \"...test MyApp...\"",
+            "scope": "resource"
+          }
+        }
+      },
+      {
+        "title": "Use python3 command",
+        "properties": {
+          "python.djangoTestRunner.usePython3": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether to use the \"python3 manage.py ...\" instead of \"python manage.py ...\"",
             "scope": "resource"
           }
         }
