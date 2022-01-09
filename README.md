@@ -6,6 +6,7 @@
 ## How To Use This Extension
 
 - clone this repo using your preferred git workflow
+- You can skip the next 3 steps if you use the .vsix file from the repo
 - `cd {the-newly-cloned-repo}`
 - `pnpm install` or `npm install` to install the necessary packages
 - `npx vsce package` to build the .vsix file
